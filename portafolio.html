@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Portafolio - NeoSoft</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css"/>
+    <link rel="stylesheet" type="text/css" href="estilos/bootstrap.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet"/>
+    <link href="estilos/estilo.css" rel="stylesheet"/>
+    <link href="estilos/responsive.css" rel="stylesheet"/>
+</head>
+<body class="sub_page">
+    <div class="hero_area">
+        <header class="header_section">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <nav class="navbar navbar-expand-lg custom_nav-container">
+                            <a class="navbar-brand" href="index.html">
+                                <span>NeoSoft</span>
+                            </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="about.html">Sobre Nosotros</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="service.html">Servicios</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="contact.html">Contactos</a></li>
+                                    <li class="nav-item active"><a class="nav-link" href="portafolio.html">Portafolio</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <section class="service_section layout_padding">
+        <div class="container">
+            <div class="custom_heading-container">
+                <h2>Portafolio</h2>
+            </div>
+            <div class="service_container layout_padding2 full-width-container">
+                <div class="service_box full-width-box">
+                    <div class="img-box carrusel" onclick="abrirModal(0)">
+                        <button class="flecha izquierda" onclick="cambiarImagen(-1, 0); event.stopPropagation();">❮</button>
+                        <img id="img0" src="imagenes/portafolio1.png" alt="Proyecto 1">
+                        <button class="flecha derecha" onclick="cambiarImagen(1, 0); event.stopPropagation();">❯</button>
+                    </div>
+                    <div class="detail-box">
+                        <h4>UTA DRIVE</h4>
+                        <p>Es una plataforma innovadora diseñada para simplificar y optimizar el alquiler de vehículos. Con una interfaz intuitiva y potente, permite a los clientes reservar su auto ideal en segundos, mientras que las empresas pueden gestionar flotas, pagos y mantenimiento con total eficiencia.</p>
+                        <a href="https://softpracticas.online/dalembert/vista/index.html" target="_blank">Ver Proyecto</a>
+                    </div>
+                </div>
+
+                <div class="service_box full-width-box">
+                    <div class="img-box carrusel" onclick="abrirModal(1)">
+                        <button class="flecha izquierda" onclick="cambiarImagen(-1, 1); event.stopPropagation();">❮</button>
+                        <img id="img1" src="proyecto2-1.jpg" alt="Proyecto 2">
+                        <button class="flecha derecha" onclick="cambiarImagen(1, 1); event.stopPropagation();">❯</button>
+                    </div>
+                    <div class="detail-box">
+                        <h4>Proyecto 2</h4>
+                        <p>Este proyecto ofrece soluciones tecnológicas avanzadas con un diseño intuitivo.</p>
+                        <a href="https://ejemplo.com/proyecto2" target="_blank">Ver Proyecto</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="modal">
+        <span class="cerrar" onclick="cerrarModal()">×</span>
+        <img id="imagenModal" alt="Imagen Ampliada">
+    </div>
+
+    <div class="footer_bg">
+        <section class="info_section layout_padding2-bottom">
+            <div class="container info_content">
+                <div>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="d-flex">
+                                <h5>NeoSoft</h5>
+                            </div>
+                            <div class="d-flex">
+                                <ul>
+                                    <li><a href="about.html">Sobre Nosotros</a></li>
+                                    <li><a href="service.html">Nuestros Servicios</a></li>
+                                    <li><a href="contact.html">Contactos</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="container-fluid footer_section">
+            <p>© 2025 Todos los derechos reservados por <strong>NeoSoft</strong>.</p>
+        </section>
+    </div>
+
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <script>
+        let imagenes = [
+            ["imagenes/portafolio1.png", "imagenes/portafolio2.png", "imagenes/portafolio3.png","imagenes/portafolio4.png","imagenes/portafolio5.png","imagenes/portafolio6.png"],
+            ["proyecto2-1.jpg", "proyecto2-2.jpg", "proyecto2-3.jpg"]
+        ];
+        let indices = [0, 0];
+
+        function cambiarImagen(direccion, proyecto) {
+            indices[proyecto] += direccion;
+            if (indices[proyecto] < 0) {
+                indices[proyecto] = imagenes[proyecto].length - 1;
+            } else if (indices[proyecto] >= imagenes[proyecto].length) {
+                indices[proyecto] = 0;
+            }
+            document.getElementById(`img${proyecto}`).src = imagenes[proyecto][indices[proyecto]];
+        }
+
+        function abrirModal(proyecto) {
+            document.getElementById("imagenModal").src = document.getElementById(`img${proyecto}`).src;
+            document.getElementById("modal").style.display = "flex";
+        }
+
+        function cerrarModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+    </script>
+</body>
+</html>
